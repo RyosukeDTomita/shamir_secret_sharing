@@ -27,7 +27,10 @@ def print_polynomial(an_list: list[int]) -> None:
         an_list (_type_): _description_
     """
     for i in range(len(an_list)):
-        print(f" + {an_list[i]}x^{i}", end="")
+        if i == 0:
+          print(f"f(x) = {an_list[0]}", end="")
+        else:
+          print(f" + {an_list[i]}x^{i}", end="")
     print()
     return
 
@@ -92,8 +95,6 @@ def main():
     n = 6  # number of shares
     k = 3  # number of shares required to reconstruct the secret
     test_score_list = [10, 20, 30, 40]  # example secret data
-    sum_test_score = sum(test_score_list)
-    print(f"sum_test_score: {sum_test_score}")
 
     for a0 in test_score_list:
         # -----Preparation-----
@@ -118,6 +119,7 @@ def main():
         # calcurate f(0) = a0 with Lagrange basis polynomial
         f0 = cal_lagrange_basis_for_polynomial(random_points)
         print(f"f(0) = {f0} = a0 = {a0}")
+        print("----------DONE----------")
 
 
 if __name__ == "__main__":
